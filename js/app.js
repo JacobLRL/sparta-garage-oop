@@ -3,6 +3,7 @@ const audiModels = ["A1", "A2", "A3", "A4", "A5", "A5", "A7", "A8", "R8"];
 const bmwModels = ["1 series", "3 series", "5 series"];
 const mercModels = ["A class", "B class", "C class", "E class", "S class"];
 const teslaModels = ["Model 3", "Model S", "Model X"];
+const allModels = [audiModels, bmwModels, mercModels, teslaModels];
 const carColors = ["Black", "White", "Silver", "Blue", "Red"];
 const carYears = [2016, 2017, 2018, 2019];
 
@@ -42,26 +43,8 @@ function createCars(amount) {
         let rand = Math.round(Math.random() * 3);
         let brand;
         let model;
-        switch (rand) {
-            case 0:
-                brand = brands[0];
-                model = randomCarModel(audiModels);
-                break;
-            case 1:
-                brand = brands[1];
-                model = randomCarModel(bmwModels);
-                break;
-            case 2:
-                brand = brands[2];
-                model = randomCarModel(mercModels);
-                break;
-            case 3:
-                brand = brands[3];
-                model = randomCarModel(teslaModels);
-                break;
-            default:
-                break;
-        }
+        brand = brands[rand];
+        model = randomCarModel(allModels[rand]);
         carArray.push(new Car(brand, model, randomCarColor(), randomYear()));
     }
     return carArray;
